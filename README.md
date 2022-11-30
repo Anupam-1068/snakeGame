@@ -1,2 +1,2 @@
-# snakegame2
- My second snake game project
+# snakegame
+ My first snake game project
