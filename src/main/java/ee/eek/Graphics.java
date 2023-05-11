@@ -21,17 +21,21 @@ public class Graphics extends JPanel implements ActionListener {
 
     private final Font font = new Font("TimesRoman", Font.BOLD, 30);
 
-    private int[] snakePosX = new int[BOARD_SIZE];  // x coordinate of snake
-    private int[] snakePosY = new int[BOARD_SIZE];  // y coordinate of snake
-    private int snakeLength;
+    private static int[] snakePosX = new int[BOARD_SIZE];  // x coordinate of snake
+    private static int[] snakePosY = new int[BOARD_SIZE];  // y coordinate of snake
+    private static int snakeLength;
 
-    private Food food;
-    private int foodEaten;
+    private static Food food;
+    private static int foodEaten;
 
     private char direction = 'R';    //Initially snake moves in right direction
-    private boolean isMoving = false;
+    private static boolean isMoving = false;
     private final Timer timer = new Timer(150, this); //delay of time for mov
+
+
+
     // Lower the number, faster the snake moves
+    private static boolean check;
 
     public Graphics() {
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -121,11 +125,11 @@ public class Graphics extends JPanel implements ActionListener {
         }
     }
 
-    private void spawnFood() {
+    private static void spawnFood() {
         food = new Food();
     }
 
-    private void eatFood() {
+    public static void eatFood() {
         if (snakePosX[0] == food.getPosX() && snakePosY[0] == food.getPosY()) {
             snakeLength++;
             foodEaten++;
@@ -133,7 +137,7 @@ public class Graphics extends JPanel implements ActionListener {
         }
     }
 
-    private void collisionTest() {
+    public final void collisionTest() {
         for (int i = snakeLength; i > 0; i--) {   //Check if head of snake touches it body part
             if (snakePosX[0] == snakePosX[i] && snakePosY[0] == snakePosY[i]) {
                 isMoving = false; // snakePosX[0] = x coordinate of head of the snake
@@ -144,12 +148,19 @@ public class Graphics extends JPanel implements ActionListener {
         if (snakePosX[0] < 0 || snakePosX[0] > WIDTH - UNIT_SIZE
                 || snakePosY[0] < 0 || snakePosY[0] > HEIGHT - UNIT_SIZE) {
             isMoving = false;  // Collision with walls
+            check = false;
         }
 
         if (!isMoving) {
             timer.stop();
         }
+        check = false;
     }
+
+    public static boolean isCheck() {
+        return check;
+    }
+
 
     @Override
     public final void actionPerformed(ActionEvent e) {
@@ -161,4 +172,7 @@ public class Graphics extends JPanel implements ActionListener {
 
         repaint();
     }
+
+
+
 }

@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ee.eek</groupId>
-  <artifactId>snakegame2</artifactId>
+  <artifactId>snakegame</artifactId>
   <version>1</version>
 
   <packaging>jar</packaging>

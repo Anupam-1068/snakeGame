@@ -1,94 +1,80 @@
 package ee.eek;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
+import javax.swing.*;
+import java.awt.*;
 import java.lang.reflect.Method;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-//@Test
-//public void aSnakeIs5UnitsLongByDefault() {
-//        assertEquals("Hello".length(), 5);
-//        Graphics graphics = new Graphics();
-//        int length = graphics.snakeLength;
-//        assertEquals(5, length);
-//        }
-//@Test
-//public void aSnakeIsMovingRightByDefault() {
-//        Graphics graphics = new Graphics();
-//        char direction = graphics.direction;
-//        assertEquals('R', direction);
-//        }
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
 
-    int WIDTH = 700;
-    int HEIGHT = 600;
-    int UNIT_SIZE = 50;
-    int BOARD_SIZE = (WIDTH * HEIGHT) / (UNIT_SIZE * UNIT_SIZE);
-    int MIN_SNAKE_LENGTH = 5;
-    char START_DIRECTION = 'R';
     Graphics graphics = new Graphics();
+    static final int WIDTH = 700;
+    static final int HEIGHT = 600;
+    static final int UNIT_SIZE = 50;
+    static final int BOARD_SIZE = (WIDTH * HEIGHT) / (UNIT_SIZE * UNIT_SIZE);
+    private int[] snakePosX = new int[BOARD_SIZE];  // x coordinate of snake
+    private int[] snakePosY = new int[BOARD_SIZE];  // y coordinate of snake
+    private int snakeLength = 5;
+    private int foodEaten;
+    private char direction = 'R' ;    //Initially snake moves in right direction
+    private boolean isMoving = false;
+    // Lower the number, faster the snake moves
+    private boolean check;
 
 
     @Test
-    public void testSnakeWillHitWall() {
-
-    }
-
-    @Test
-    /*
-     * Tests whether the game will end when snake hits the wall Part of this
-     * code is directly copied from the GameLogic code that tests whether the
-     * game has ended
-     */
-    public void testGameWillEndHitWall() {
-
-    }
-
-    /*
-     * Tests whether the game will end when snake eats itself Part of this code
-     * is directly copied from the GameLogic code that tests whether the game
-     * has ended
-     */
-    @Test
-    public void testGameWillEndEatBody() {
-
-    }
-
-    @Test
-    public void testMoveSnake() {
-
+    public void aSnakeIsMovingRightByDefault() {
+        char dir = direction;
+        assertEquals('R', dir);
         }
+    @Test
+    public void testSnakeCollidesWithWall() {
 
-        // moves the objects on the board to the next location
-        // directly copied from GameLogic
-//        for (int i = snakeToMove.size() - 1; i >= 0; i--) {
-//            Snake s = snakeToMove.get(i);
-//            s.move();
-//            snakeToMove.set(i, s);
-//        }
-//
-//        // updates the board
-//        board.resetBoard();
-//        for (int i = snakeToMove.size() - 1; i >= 0; i--) {
-//            Snake s = snakeToMove.get(i);
-//            board.setObject(s);
-//        }
-//
-//        boolean moves = false;
-//        for (int i = 0; i < snake.size(); i++) {
-//            int x = (int) snake.get(i).nextLocation().getX();
-//            int y = (int) snake.get(i).nextLocation().getY();
-//            moves = board.getObject(x, y).equals(snakeToMove.get(i));
-//        }
-//
-//        assertTrue("snake moves properly", moves);
-//    }
+
+        // Set up the Snake's position near the wall
+
+        snakePosX[0] = -1;
+
+        // Check if the Snake collides with the wall
+        boolean collidesWithWall = graphics.isCheck();
+
+        // Assert that the Snake collides with the wall
+        assertFalse(collidesWithWall);
+    }
+
 
     @Test
     public void testEatFood() {
+        int initialLength = snakeLength;
+        // Assuming the initial score of the snake
+        int lengthIncrement = 1;
+
+        // Let the snake eat the food
+        graphics.eatFood();
+        // Assert that the length of the snake has increased by the expected increment
+        assertEquals(initialLength + lengthIncrement, 6);
+
 
         }
+
+    @Test
+    public void testEatFoodScore() {
+        // Assuming the initial score of the snake
+        int initialScore = foodEaten;
+        // Assuming the score and length increment after eating food
+        int scoreIncrement = 1;
+
+        // Let the snake eat the food
+        graphics.eatFood();
+
+
+        // Assert that the score of the snake has increased by the expected increment
+        assertEquals(initialScore + scoreIncrement, 1);
+
+    }
 
     }

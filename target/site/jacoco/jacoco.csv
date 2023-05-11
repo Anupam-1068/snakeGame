@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-snakegame2,ee.eek,Graphics,254,85,33,0,42,24,23,3,5,3
-snakegame2,ee.eek,Graphics.new KeyAdapter() {...},51,6,15,0,13,1,10,1,1,1
-snakegame2,ee.eek,App,5,0,0,0,2,0,1,0,1,0
-snakegame2,ee.eek,Game,26,0,0,0,9,0,1,0,1,0
-snakegame2,ee.eek,Food,6,25,0,0,2,6,2,2,2,2
+snakegame,ee.eek,Graphics,132,165,20,13,24,45,17,11,1,9
+snakegame,ee.eek,Graphics.new KeyAdapter() {...},49,6,15,0,13,1,10,1,1,1
+snakegame,ee.eek,App,5,0,0,0,2,0,1,0,1,0
+snakegame,ee.eek,Game,26,0,0,0,9,0,1,0,1,0
+snakegame,ee.eek,Food,3,28,0,0,1,7,1,3,1,3
