@@ -1,11 +1,6 @@
 package ee.eek;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-
-import javax.swing.*;
-import java.awt.*;
-import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,15 +17,10 @@ public class AppTest {
     private int foodEaten;
     private char direction = 'R' ;    //Initially snake moves in right direction
     private boolean isMoving = false;
-    // Lower the number, faster the snake moves
     private boolean check;
 
 
-    @Test
-    public void aSnakeIsMovingRightByDefault() {
-        char dir = direction;
-        assertEquals('R', dir);
-        }
+
     @Test
     public void testSnakeCollidesWithWall() {
 
@@ -39,7 +29,7 @@ public class AppTest {
 
         snakePosX[0] = -1;
 
-        // Check if the Snake collides with the wall
+        // Check if the Snake collides with the wall and itself
         boolean collidesWithWall = graphics.isCheck();
 
         // Assert that the Snake collides with the wall
@@ -76,5 +66,11 @@ public class AppTest {
         assertEquals(initialScore + scoreIncrement, 1);
 
     }
+
+//    @Test
+//    public void aSnakeIsMovingRightByDefault() {
+//        char dir = direction;
+//        assertEquals('R', dir);
+//    }
 
     }

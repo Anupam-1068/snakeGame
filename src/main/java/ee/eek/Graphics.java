@@ -30,11 +30,9 @@ public class Graphics extends JPanel implements ActionListener {
 
     private char direction = 'R';    //Initially snake moves in right direction
     private static boolean isMoving = false;
-    private final Timer timer = new Timer(150, this); //delay of time for mov
-
-
-
+    private final Timer timer = new Timer(150, this); //delay of time for move
     // Lower the number, faster the snake moves
+
     private static boolean check;
 
     public Graphics() {
